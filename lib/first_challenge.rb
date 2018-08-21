@@ -12,11 +12,18 @@ def first_challenge
       favorite_icecream_flavors: ["strawberry", "cookie dough", "mint chip"]
     }
   }
-
-  #your code here
-
-
-  #remember to return your newly altered contacts hash!
+  
+  contacts['Jon Snow'][:favorite_icecream_flavors] << 'mint chip'
+  contacts['Jon Snow'][:address] = "The Lord Commander's Rooms, The Wall, Westeros"
+  
+  contacts.each do |person, data|
+    data.each do |attribute, value|
+      if person == 'Freddy Mercury' && attribute == :favorite_icecream_flavors
+        value.delete_if {|flavor| flavor == 'strawberry'} 
+      end
+    end
+  end 
   contacts
 end
 
+first_challenge
